@@ -20,15 +20,15 @@ export default function Navbar() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <nav className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 bg-white/80 dark:bg-slate-900/80 shadow-md backdrop-blur-md border-b border-slate-200 dark:border-slate-700">
-      <div className="text-2xl font-bold text-slate-800 dark:text-white tracking-tight">
+    <nav className="sticky top-0 z-30 flex items-center justify-between px-4 py-3 bg-white/90 dark:bg-gray-900/90 shadow-md backdrop-blur-md border-b border-gray-200 dark:border-gray-700 rounded-b-2xl md:rounded-none">
+      <div className="text-2xl font-bold text-gray-800 dark:text-white tracking-tight">
         {pageTitles[pathname] || 'Relax'}
       </div>
       <div className="flex items-center gap-4">
         {mounted && (
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="rounded-full p-2 bg-indigo-100 dark:bg-slate-700 text-indigo-600 dark:text-indigo-200 shadow hover:bg-indigo-200 dark:hover:bg-slate-600 transition"
+            className="rounded-full p-2 bg-emerald-100 dark:bg-gray-700 text-indigo-600 dark:text-emerald-200 shadow hover:bg-emerald-200 dark:hover:bg-gray-600 transition"
             aria-label="Toggle dark mode"
           >
             {theme === 'dark' ? (
@@ -62,7 +62,7 @@ export default function Navbar() {
           </button>
         )}
         <button
-          className="md:hidden rounded-full p-2 bg-indigo-100 dark:bg-slate-700 text-indigo-600 dark:text-indigo-200 shadow hover:bg-indigo-200 dark:hover:bg-slate-600 transition"
+          className="md:hidden rounded-full p-2 bg-emerald-100 dark:bg-gray-700 text-indigo-600 dark:text-emerald-200 shadow hover:bg-emerald-200 dark:hover:bg-gray-600 transition"
           aria-label="Open sidebar"
         >
           <svg

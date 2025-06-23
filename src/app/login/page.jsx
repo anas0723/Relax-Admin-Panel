@@ -1,5 +1,6 @@
-"use client";
+'use client';
 import { useState } from 'react';
+import { FiMail, FiLock } from 'react-icons/fi';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
@@ -25,19 +26,44 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
-      <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 p-8 rounded shadow-md w-full max-w-sm">
-        <h2 className="text-2xl font-bold mb-6 text-center">Admin Login</h2>
-        <div className="mb-4">
-          <label className="block mb-1 font-medium">Email</label>
-          <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-400 dark:bg-gray-700 dark:text-white" />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 via-emerald-500 to-slate-800 dark:from-slate-900 dark:via-indigo-900 dark:to-emerald-900">
+      <form onSubmit={handleSubmit} className="w-full max-w-sm bg-white/90 dark:bg-slate-900/90 p-8 rounded-2xl shadow-2xl flex flex-col gap-6 backdrop-blur-md">
+        <h2 className="text-3xl font-extrabold text-center text-indigo-700 dark:text-emerald-400 mb-2">Relax Admin Login</h2>
+        <div className="flex flex-col gap-4">
+          <div className="relative">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-indigo-400 dark:text-emerald-300">
+              <FiMail />
+            </span>
+            <input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+              placeholder="Email"
+              className="w-full pl-10 pr-3 py-2 rounded-lg border border-indigo-200 dark:border-emerald-700 bg-indigo-50 dark:bg-slate-800 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 dark:focus:ring-emerald-400 transition"
+            />
+          </div>
+          <div className="relative">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-indigo-400 dark:text-emerald-300">
+              <FiLock />
+            </span>
+            <input
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+              placeholder="Password"
+              className="w-full pl-10 pr-3 py-2 rounded-lg border border-indigo-200 dark:border-emerald-700 bg-indigo-50 dark:bg-slate-800 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 dark:focus:ring-emerald-400 transition"
+            />
+          </div>
         </div>
-        <div className="mb-4">
-          <label className="block mb-1 font-medium">Password</label>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} required className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-400 dark:bg-gray-700 dark:text-white" />
-        </div>
-        {error && <div className="text-red-500 mb-4 text-center">{error}</div>}
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Login</button>
+        {error && <div className="text-red-500 text-center text-sm">{error}</div>}
+        <button
+          type="submit"
+          className="w-full py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-bold shadow-lg transition text-lg mt-2"
+        >
+          Login
+        </button>
       </form>
     </div>
   );
