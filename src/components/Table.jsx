@@ -6,7 +6,7 @@ export default function Table({ columns, data, renderActions }) {
       <table className="min-w-full text-gray-800 dark:text-gray-100">
         <thead>
           <tr className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
-            {columns.map(col => (
+            `{columns.map(col => (
               <th key={col.key} className="px-6 py-3 text-left font-bold uppercase tracking-wider">{col.label}</th>
             ))}
             {renderActions && <th className="px-6 py-3">Actions</th>}
