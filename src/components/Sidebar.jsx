@@ -71,7 +71,7 @@ export default function Sidebar() {
         {/* Logout button, absolute on desktop, relative on mobile */}
         <div className="relative w-full">
           <button
-            className="flex items-center gap-2 w-full md:w-auto px-4 py-2 bg-white bg-opacity-20 text-white rounded-lg font-semibold shadow hover:bg-opacity-30 transition absolute md:static bottom-6 right-4 md:bottom-auto md:right-auto"
+            className="flex items-center gap-2 w-full md:w-auto px-4 py-2 bg-transparent bg-opacity-20 text-white rounded-lg font-semibold shadow hover:bg-opacity-30 transition absolute md:static bottom-6 right-4 md:bottom-auto md:right-auto"
             onClick={() => { window.location.href = '/login'; }}
           >
             <FiLogOut />
