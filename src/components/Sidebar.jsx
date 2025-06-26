@@ -51,7 +51,7 @@ export default function Sidebar() {
               key={link.href}
               href={link.href}
               className={`relative flex items-center gap-4 px-6 py-3 rounded-lg font-medium text-lg transition-all duration-150 cursor-pointer group
-                ${pathname === link.href ? 'bg-white bg-opacity-20 text-emerald-100 shadow-md' : 'text-white hover:bg-emerald-100 hover:text-indigo-700 hover:scale-105'}
+                ${pathname === link.href ? 'bg-emerald-100 bg-opacity-20 text-emerald-300 shadow-md' : 'text-white hover:bg-emerald-100 hover:text-indigo-700 hover:scale-105'}
                 `}
             >
               <span className="text-2xl group-hover:scale-110 transition-transform">
