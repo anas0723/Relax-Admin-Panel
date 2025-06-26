@@ -1,9 +1,8 @@
 'use client';
-import { FiHome, FiUsers, FiUserCheck, FiMusic, FiSettings, FiMoon, FiSun, FiLogOut } from 'react-icons/fi';
+import { FiHome, FiUsers, FiUserCheck, FiMusic, FiSettings, FiLogOut } from 'react-icons/fi';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
 
 const links = [
   { href: '/dashboard', label: 'Dashboard', icon: <FiHome /> },
@@ -16,7 +15,6 @@ const links = [
 export default function Sidebar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(true);
-  const { theme, setTheme } = useTheme();
   const [showOverlay, setShowOverlay] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -69,23 +67,6 @@ export default function Sidebar() {
             </Link>
           ))}
         </nav>
-        {/* Dark mode toggle */}
-        <div className={`flex items-center justify-center ${open ? 'px-6' : 'px-0'} py-2 mt-2`}> 
-          {mounted && (
-            <button
-              aria-label="Toggle dark mode"
-              className="p-2 rounded-full bg-white bg-opacity-20 text-white hover:bg-opacity-40 transition shadow"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              {theme === 'dark' ? <FiSun /> : <FiMoon />}
-            </button>
-          )}
-          {open && mounted && (
-            <span className="ml-3 text-white text-sm font-medium">
-              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
-            </span>
-          )}
-        </div>
         <div className="flex-1" />
         {/* Logout button, absolute on desktop, relative on mobile */}
         <div className="relative w-full">

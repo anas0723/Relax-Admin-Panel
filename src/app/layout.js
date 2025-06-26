@@ -1,15 +1,11 @@
+'use client';
 import './globals.css';
-import { ThemeProvider } from 'next-themes';
 import Layout from '../components/Layout';
+import { usePathname } from 'next/navigation';
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-gray-50 dark:bg-gray-900 min-h-screen">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Layout>{children}</Layout>
-        </ThemeProvider>
-      </body>
-    </html>
-  );
+  const pathname = usePathname();
+  const isLogin = pathname === '/login';
+
+  return isLogin ? children : <Layout>{children}</Layout>;
 }
