@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌿 Relax Admin Panel
 
 A sleek, modern, and responsive dashboard for effortless management and insightful analytics.
@@ -62,3 +63,4 @@ Licensed under the [MIT License](LICENSE).
 <p align="center">
     Made with ❤️ by <b>anas0723</b>
 </p>
+=======
