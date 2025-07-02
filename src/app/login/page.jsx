@@ -11,7 +11,7 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    if (email === "anas@relax.com" && password === "relax1234") {
+    if (email === "shayaan@devdefy.com" && password === "123456") {
       router.push("/home");
     } else {
       setError("Invalid email or password");
