@@ -1,11 +1,15 @@
-'use client';
+
 import './globals.css';
-import Layout from '../components/Layout';
-import { usePathname } from 'next/navigation';
+import AppLayout from '../components/AppLayout';
+
+export const metadata = {
+  title: "Rellax Admin Panel",
+  description: "A modern admin panel template",
+  icons: {
+    icon: "/images/rellax-logo.png",
+  },
+};
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname() ;
-  const isLogin = pathname === '/login';
-
-  return isLogin ? children : <Layout>{children}</Layout>;
+  return <AppLayout>{children}</AppLayout>;
 }
