@@ -29,28 +29,36 @@ A sleek, modern, and responsive dashboard for effortless management and insightf
 
 ```bash
 git clone https://github.com/yourusername/relax-admin-panel.git
-cd relax-admin-panel
-npm install
-npm start
-```
+# Relax Admin Panel
 
-1. **Clone** the repository  
-2. **Install** dependencies  
-3. **Start** the development server  
-4. **Open** [http://localhost:3000](http://localhost:3000) in your browser
+## Getting Started
 
----
+1. Install dependencies:
+   ```
+   npm install
+   ```
+2. Copy `.env.local.example` to `.env.local` and fill in your credentials.
+3. Run the development server:
+   ```
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 🖼️ Preview
+## Project Structure
+- `src/` - Application source code
+- `public/` - Static assets
+- `.env.local` - Environment variables (never commit this file)
 
-![Dashboard Screenshot](./assets/dashboard.png)
+## Environment Variables
+See `.env.local.example` for required variables.
 
----
+## Next.js Environment
+- `.env.local` for secrets and runtime config (never commit this file)
+- `public/` for static assets
+- `node_modules/` and `.next/` are ignored by git
+- Use `npm run dev` for development, `npm run build` for production build
 
-## 🤝 Contributing
-
-We welcome contributions!  
-Open an issue or submit a pull request to help improve Relax Admin Panel.
+For more, see the [Next.js documentation](https://nextjs.org/docs/basic-features/environment-variables).
 
 ---
 
