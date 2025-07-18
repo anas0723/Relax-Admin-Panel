@@ -3,29 +3,42 @@
 
 
 :root {
-  /* Primary backgrounds */
+  /* Backgrounds */
+  /* main background-color; */
   --background: #F5F7FA;
-  --background-alt: #ECEFF4;
-  --background-soft: #F0FCFC;
 
-  /* Sidebar / nav */
+  /* Sidebar */
+/* A vertical gradient from teal (#1AC2B7) to sky blue (#00CFFF). */
   --sidebar-bg: linear-gradient(180deg, #1AC2B7 0%, #00CFFF 100%);
-  --sidebar-solid: #113F45;
-  --sidebar-navy: #2D3A4A;
 
-  /* Accent colors */
+  /* Text */
+  /* main text color  */
+  --text-primary: #2c2c38;
+  /* secondary text color  */
+  --text-secondary: #6C757D;
+  /* white text color  */
+  --text-white: #F5F5F5;
+  /* header text color  */
+  --text-header: #4C1973;
+
+
+  /* Accent Colors */
+  /* Used to draw attention — buttons, active links, icons, hover states. */
   --accent: #00CFFF;
+/* Used for hover states, secondary buttons, icons, or borders. */
   --accent-teal: #1AC2B7;
-  --accent-hover: #00CFFF;
+  /* Used for headings, section titles, or to add richness to UI. */
   --accent-purple: #5A1F68;
+  /* Used for backgrounds, hover, borders, or footer area. */
   --accent-purple-dark: #4C1973;
 
-  /* Text colors */
-  --text-primary: #1E1E2F;
-  --text-secondary: #6C757D;
-  --text-header: #4C1973;
-  --text-white: #F5F5F5;
+  /* Hover Styling */
+  /* hover background color  */
+  --hover-bg: rgba(255, 255, 255, 0.12);
+  /* hover color  */
+  --hover-text: #1AC2B7;
 }
+
 
 body {
   background: var(--background);

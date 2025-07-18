@@ -1,10 +1,18 @@
 'use client';
-import { FiHome, FiUsers, FiUserCheck, FiMusic, FiSettings, FiLogOut } from 'react-icons/fi';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
 
-const links = [
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import {
+  FiHome,
+  FiUsers,
+  FiUserCheck,
+  FiMusic,
+  FiSettings,
+  FiLogOut,
+} from 'react-icons/fi';
+
+const navLinks = [
   { href: '/dashboard', label: 'Dashboard', icon: <FiHome /> },
   { href: '/users', label: 'Users', icon: <FiUsers /> },
   { href: '/partners', label: 'Partners', icon: <FiUserCheck /> },
@@ -14,74 +22,74 @@ const links = [
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
   const [showOverlay, setShowOverlay] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleSidebarToggle = () => {
-    setOpen(!open);
-    setShowOverlay(!open);
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+    setShowOverlay(!isOpen);
   };
 
   return (
     <>
-      {/* Mobile overlay */}
+      {/* Mobile Overlay */}
       {showOverlay && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-40 z-30 md:hidden transition-opacity duration-300"
-          onClick={handleSidebarToggle}
+          className="fixed inset-0 bg-black bg-opacity-40 z-30 md:hidden"
+          onClick={toggleSidebar}
         />
       )}
+
       <aside
-        className={`transition-all duration-300 bg-[var(--sidebar-bg)] shadow-xl flex flex-col h-full md:h-screen ${open ? 'w-64' : 'w-20'} fixed md:static z-40 rounded-r-2xl md:rounded-none top-0 left-0 min-h-screen`}
+        className={`fixed md:static top-0 left-0 h-screen min-h-screen z-40 flex flex-col transition-all duration-300 rounded-r-2xl md:rounded-none shadow-xl
+          ${isOpen ? 'w-64' : 'w-20'}
+          bg-[var(--sidebar-bg)]
+        `}
       >
-        <div className="flex items-center justify-between px-6 py-4">
-          {open ? (
-            <img src="/images/rellax-logo.png" alt="Rellax Logo" className="h-10 w-auto transition-all" />
-          ) : null}
-          <button className="md:hidden text-[var(--text-white)]" onClick={handleSidebarToggle}>
-            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-menu"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-          </button>
+        {/* Header */}
+        <div className="flex items-center justify-center px-6 py-4">
+          {isOpen && <img src="/images/rellax-logo.png" alt="Logo" className="h-32 w-32 bg-dynamic-image bg-cover bg-center" />}
+      
         </div>
-        <nav className="flex-1 flex flex-col gap-2 mt-4">
-          {links.map(link => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`relative flex items-center gap-4 px-6 py-3 rounded-lg font-medium text-lg transition-all duration-150 cursor-pointer group
-                ${pathname === link.href ? 'bg-[rgba(255,255,255,0.12)] text-[var(--accent)] shadow-md' : 'text-[var(--text-white)] hover:bg-[rgba(255,255,255,0.08)] hover:text-[var(--accent-teal)] hover:scale-105'}
+
+        {/* Navigation */}
+        <nav className="flex flex-col gap-2 mt-4 px-2">
+          {navLinks.map(({ href, label, icon }) => {
+            const active = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+              className={`group flex items-center gap-4 px-4 py-3 rounded-lg font-medium text-base transition-all duration-150 
+                  ${active ? 'bg-[var(--hover-bg)] text-[var(--accent)] shadow-md' : 'text-[var(--text-secondary)] hover:text-[var(--accent)] hover:bg-[var(--hover-bg)]'}
                 `}
-            >
-              <span className="text-2xl group-hover:scale-110 transition-transform">
-                {link.icon}
-              </span>
-              {open ? (
-                <span className="group-hover:underline text-gray-700 group-hover:decoration-2">{link.label}</span>
-              ) : (
-                <span className="absolute left-full ml-2 px-2 py-1 rounded bg-[var(--sidebar-navy)] text-gray-600 text-xs opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap shadow-lg z-50">
-                  {link.label}
-                </span>
-              )}
-            </Link>
-          ))}
+              >
+                <span className="text-2xl">{icon}</span>
+                {isOpen ? (
+                  <span className="group-hover:underline ">{label}</span>
+                ) : (
+                  <span className="absolute left-full ml-2 px-2 py-1 text-xs bg-[var(--sidebar-navy)] text-white opacity-0 group-hover:opacity-100 rounded shadow-lg transition-opacity">
+                    {label}
+                  </span>
+                )}
+              </Link>
+            );
+          })}
         </nav>
-        <div className="flex-1" />
-        {/* Logout button, absolute on desktop, relative on mobile */}
-        <div className="relative w-full">
+
+        <div className="flex-grow" />
+
+        {/* Logout */}
+        <div className="relative w-full px-4 pb-6">
           <button
-            className="flex items-center gap-2 w-full md:w-auto px-4 py-2 bg-transparent bg-opacity-20 text-[var(--text-white)] rounded-lg font-semibold shadow hover:bg-[var(--accent)] hover:text-[var(--text-white)] transition absolute md:static bottom-6 right-4 md:bottom-auto md:right-auto"
-            onClick={() => { window.location.href = '/login'; }}
+            onClick={() => (window.location.href = '/login')}
+            className="flex items-center gap-2 w-full px-4 py-2 bg-transparent border border-gray-300 rounded-lg hover:bg-[var(--accent)] text-[var(--text-secondary)] hover:text-white transition"
           >
             <FiLogOut />
-            {open && <span>Logout</span>}
+            {isOpen && <span>Logout</span>}
           </button>
-          <div className={`text-xs text-[var(--text-white)] opacity-70 mt-16 md:mt-2 text-right pr-4 md:pr-0 ${open ? '' : 'hidden md:block'}`}>
-            © 2025 Relax
-          </div>
+
+         
         </div>
       </aside>
     </>

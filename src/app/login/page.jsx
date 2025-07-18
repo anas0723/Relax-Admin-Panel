@@ -20,22 +20,22 @@ const LoginPage = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-[#1a2236] relative">
+    <section className="min-h-screen flex flex-col items-center justify-center bg-[var(--background)] relative">
       {/* Logo in top-left */}
       <div className="absolute top-6 left-6">
         <img src="/images/rellax-logo.png" alt="Rellax Logo" className="h-12 w-auto" />
       </div>
-      <div className="w-full max-w-md p-8 bg-[#232c43] border border-[#29304d] rounded-2xl shadow-xl flex flex-col items-center">
+      <div className="w-full max-w-md p-8 bg-white border border-[var(--accent-teal)] rounded-2xl shadow-xl flex flex-col items-center">
         {/* Centered logo above the form */}
         <img src="/images/rellax-logo.png" alt="Rellax Logo" className="h-20 w-auto mb-6 mt-2" />
-        <h1 className="text-2xl font-bold text-white mb-6 text-center">
+        <h1 className="text-2xl font-bold text-[var(--text-header)] mb-6 text-center">
           Sign in to your account
         </h1>
         <form className="space-y-5 w-full" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="email"
-              className="block mb-2 text-sm font-medium text-white"
+              className="block mb-2 text-sm font-medium text-[var(--text-secondary)]"
             >
               Your email
             </label>
@@ -43,7 +43,7 @@ const LoginPage = () => {
               type="email"
               name="email"
               id="email"
-              className="bg-[#232c43] border border-[#29304d] text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+              className="bg-[var(--background)] border border-[var(--accent-teal)] text-[var(--text-primary)] rounded-lg focus:ring-[var(--accent)] focus:border-[var(--accent)] block w-full p-2.5 placeholder-[var(--text-secondary)]"
               placeholder="name@company.com"
               required
               value={email}
@@ -53,7 +53,7 @@ const LoginPage = () => {
           <div>
             <label
               htmlFor="password"
-              className="block mb-2 text-sm font-medium text-white"
+              className="block mb-2 text-sm font-medium text-[var(--text-secondary)]"
             >
               Password
             </label>
@@ -62,43 +62,43 @@ const LoginPage = () => {
               name="password"
               id="password"
               placeholder="••••••••"
-              className="bg-[#232c43] border border-[#29304d] text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+              className="bg-[var(--background)] border border-[var(--accent-teal)] text-[var(--text-primary)] rounded-lg focus:ring-[var(--accent)] focus:border-[var(--accent)] block w-full p-2.5 placeholder-[var(--text-secondary)]"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           {error && (
-            <div className="text-red-400 text-sm text-center">{error}</div>
+            <div className="text-red-500 text-sm text-center">{error}</div>
           )}
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
                 id="remember"
                 type="checkbox"
-                className="w-4 h-4 border border-[#29304d] rounded bg-[#232c43] focus:ring-2 focus:ring-blue-500"
+                className="w-4 h-4 border border-[var(--accent-teal)] rounded bg-[var(--background)] focus:ring-2 focus:ring-[var(--accent)]"
               />
               <label
                 htmlFor="remember"
-                className="ml-2 text-sm text-gray-300"
+                className="ml-2 text-sm text-[var(--text-secondary)]"
               >
                 Remember me
               </label>
             </div>
             <a
               href="#"
-              className="text-sm text-blue-400 hover:underline"
+            className="text-sm text-[var(--accent)] hover:underline"
             >
               Forgot password?
             </a>
           </div>
           <button
             type="submit"
-            className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition"
+            className="w-full text-white bg-[var(--accent)] hover:bg-[var(--accent-teal)] focus:ring-4 focus:outline-none focus:ring-[var(--accent)] font-medium rounded-lg text-sm px-5 py-2.5 text-center transition"
           >
             Sign in
           </button>
-          <p className="text-sm text-gray-400 text-center">
+          <p className="text-sm text-[var(--text-secondary)] text-center">
             Don’t have an account yet?{" "}
             <a
               href="#"
