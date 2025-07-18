@@ -12,19 +12,26 @@ const LoginPage = () => {
     e.preventDefault();
     setError("");
     if (email === "shayaan@devdefy.com" && password === "123456") {
-      router.push("/home");
+      localStorage.setItem('isLoggedIn', 'true');
+      router.push("/dashboard");
     } else {
       setError("Invalid email or password");
     }
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-[#1a2236]">
-      <div className="w-full max-w-md p-8 bg-[#232c43] border border-[#29304d] rounded-2xl shadow-xl">
-        <h1 className="text-2xl font-bold text-white mb-6">
+    <section className="min-h-screen flex flex-col items-center justify-center bg-[#1a2236] relative">
+      {/* Logo in top-left */}
+      <div className="absolute top-6 left-6">
+        <img src="/images/rellax-logo.png" alt="Rellax Logo" className="h-12 w-auto" />
+      </div>
+      <div className="w-full max-w-md p-8 bg-[#232c43] border border-[#29304d] rounded-2xl shadow-xl flex flex-col items-center">
+        {/* Centered logo above the form */}
+        <img src="/images/rellax-logo.png" alt="Rellax Logo" className="h-20 w-auto mb-6 mt-2" />
+        <h1 className="text-2xl font-bold text-white mb-6 text-center">
           Sign in to your account
         </h1>
-        <form className="space-y-5" onSubmit={handleSubmit}>
+        <form className="space-y-5 w-full" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="email"
