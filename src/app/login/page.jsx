@@ -1,21 +1,29 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { login } from "@/api";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    if (email === "shayaan@devdefy.com" && password === "123456") {
-      localStorage.setItem('isLoggedIn', 'true');
+    setLoading(true);
+    try {
+      const userData = await login(email, password);
+      // Assuming the API returns a token or some user data on success
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("userData", JSON.stringify(userData));
       router.push("/dashboard");
-    } else {
-      setError("Invalid email or password");
+    } catch (err) {
+      setError(err.message || "Invalid Mail or password");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,42 +79,15 @@ const LoginPage = () => {
           {error && (
             <div className="text-red-500 text-sm text-center">{error}</div>
           )}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="remember"
-                type="checkbox"
-                className="w-4 h-4 border border-[var(--accent-teal)] rounded bg-[var(--background)] focus:ring-2 focus:ring-[var(--accent)]"
-              />
-              <label
-                htmlFor="remember"
-                className="ml-2 text-sm text-[var(--text-secondary)]"
-              >
-                Remember me
-              </label>
-            </div>
-            <a
-              href="#"
-            className="text-sm text-[var(--accent)] hover:underline"
-            >
-              Forgot password?
-            </a>
-          </div>
+     
           <button
             type="submit"
             className="w-full text-white bg-[var(--accent)] hover:bg-[var(--accent-teal)] focus:ring-4 focus:outline-none focus:ring-[var(--accent)] font-medium rounded-lg text-sm px-5 py-2.5 text-center transition"
+            disabled={loading}
           >
-            Sign in
+            {loading ? "Signing in..." : "Sign in"}
           </button>
-          <p className="text-sm text-[var(--text-secondary)] text-center">
-            Don’t have an account yet?{" "}
-            <a
-              href="#"
-              className="text-blue-400 hover:underline"
-            >
-              Sign up
-            </a>
-          </p>
+        
         </form>
       </div>
     </section>
