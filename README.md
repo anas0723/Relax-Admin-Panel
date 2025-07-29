@@ -19,9 +19,9 @@ A sleek, modern, and responsive dashboard for effortless management and insightf
 
 | Layer      | Technologies                |
 |------------|----------------------------|
-| **Frontend** | React, Redux, Tailwind CSS |
+| **Frontend** | React, Redux, Tailwind CSS | MUi
 | **Backend**  | Node.js, Express           |
-| **Database** | MongoDB                    |
+
 
 ---
 
