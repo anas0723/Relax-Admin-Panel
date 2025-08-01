@@ -1,22 +1,24 @@
 import axios from "axios";
 
-const apiClient = axios.create({
-    baseURL: process.env.LOGIN_ADMIN_API_BASE_URL,
-    headers: {
-    "Content-Type": "application/json",
-  },
-});
-
+// Login function for portal authentication
 export const login = async (email, password) => {
   try {
-    const response = await apiClient.get("/users/me", {
-      auth: {
-        username: email,
-        password: password,
+    // Ensure BASE_URL does not end with /auth/authenticate-portal
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/?auth\/authenticate-portal$/, "");
+    const response = await axios.post(
+      `${baseUrl}/auth/authenticate-portal`,
+      {
+        email,
+        password,
       },
-    });
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     throw error.response ? error.response.data : new Error("Login failed");
   }
-}; 
+};
