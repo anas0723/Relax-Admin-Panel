@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 🌿 Relax Admin Panel
 
 A sleek, modern, and responsive dashboard for effortless management and insightful analytics.
