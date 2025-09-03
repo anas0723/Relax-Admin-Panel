@@ -71,6 +71,4 @@ Licensed under the [MIT License](LICENSE).
 <p align="center">
     Made with ❤️ by <b>anas0723</b>
 </p>
-=======
 
-anas
